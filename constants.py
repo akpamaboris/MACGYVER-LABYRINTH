@@ -29,3 +29,6 @@ object_taken = "pic/object_taken.png"
 # End of the game
 victory = "pic/victory.jpg"
 defeat = "pic/fail.jpg"
+
+# Start of the game
+START_PICTURE = "pic/Start_Menu.jpg"

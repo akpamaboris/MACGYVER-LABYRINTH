@@ -17,12 +17,57 @@ window = pygame.display.set_mode((window_size, window_size))
 # Title of the window
 pygame.display.set_caption("Maze of Mac Gyver")
 
+# Initialization of the program loop
+prog = 0
+
+# Initilization of the game loop
+game = 0
+
+
+# Menu loop
+continue_home =  1
+while continue_home :
+        #Loading and displaying the home picture
+        home_game = pygame.image.load(START_PICTURE).convert()
+        window.blit(home_game,(0,-17))
+
+        #Refresh
+        pygame.display.flip()
+
+        #Setting the variables
+        start_game =1
+
+        #Loop Home
+        while continue_home:
+                pygame.time.Clock().tick(30)
+
+                for event in pygame.event.get():
+
+                        if event.type == QUIT :
+                                continue_home =0
+                                pygame.quit()
+                                sys.exit()
+
+                        elif event.type == KEYDOWN:
+                                #Lauching the game
+                                if event.key ==  K_RETURN:
+
+                                        continue_home =0
+                                        prog =1
+                                        game =1
+
+
+
+
+
+
 
 # Initialization of the program loop
 prog = 1
 
 # Initilization of the game loop
 game = 1
+
 
 # Program loop
 while prog:
@@ -47,6 +92,10 @@ while prog:
 ##
 ##        
         obj_list = [ether, needle, tube]
+
+
+
+
 
         # Game loop
         while game:
