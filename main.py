@@ -81,6 +81,14 @@ while prog:
                         #if obj.taken is False:
                         mcGyver.take_obj(obj)
 
+
+                #Display a counter
+                myfont = pygame.font.SysFont("monospace", 32)
+                myfont.set_bold(True)
+                counter_display = myfont.render("x " + str(mcGyver.nb_object), False, (255, 255, 0))
+                window.blit(counter_display, (0, 30 * (nb_sprite - 1)))
+
+
                 # Update the character direction
                 window.blit(mcGyver.direction, (mcGyver.sprite_x,
                                                 mcGyver.sprite_y))
