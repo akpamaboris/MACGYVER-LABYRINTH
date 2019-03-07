@@ -41,9 +41,9 @@ class Map:
     def display(self, window):
 
         # Different sprite of the lvl design
-        wall = pygame.image.load(pic_wall).convert()
-        start = pygame.image.load(pic_start).convert()
-        end = pygame.image.load(pic_end).convert()
+        wall = pygame.image.load(PIC_WALL).convert()
+        start = pygame.image.load(PIC_START).convert()
+        end = pygame.image.load(PIC_END).convert()
 
         lign_number = 0
         for lign in self.structure:
@@ -134,7 +134,7 @@ class Character:
                                       obj.obj_y) and (obj.taken is False):
             self.nb_object += 1
             obj.taken = True
-            obj.design = pygame.image.load(object_taken).convert_alpha()
+            obj.design = pygame.image.load(OBJECT_TAKEN).convert_alpha()
 
 
 # Class that generate objects

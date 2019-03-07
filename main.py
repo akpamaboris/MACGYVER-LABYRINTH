@@ -77,16 +77,16 @@ while prog:
         lvl.create()
         # Initilization of the lvl design
         lvl.display(window)
-        background = pygame.image.load(pic_background).convert()
+        background = pygame.image.load(PIC_BACKGROUND).convert()
 
         # Initialization of the character
-        mcGyver = Character(mcGyver_right, mcGyver_left,
-                            mcGyver_up, mcGyver_down, lvl)
+        mcGyver = Character(MCGYVER_RIGHT, MCGYVER_LEFT,
+                            MCGYVER_UP, MCGYVER_DOWN, lvl)
 
         # Initialization of objects
-        ether = Object(lvl, pic_ether)
-        needle = Object(lvl, pic_needle)
-        tube = Object(lvl, pic_tube)
+        ether = Object(lvl, PIC_ETHER)
+        needle = Object(lvl, PIC_NEEDLE)
+        tube = Object(lvl, PIC_TUBE)
 ## Boucle
 ##
 ##
@@ -151,11 +151,11 @@ while prog:
                 # Test of victory
                         if mcGyver.nb_object == 3:
                                 final_background = \
-                                        pygame.image.load(victory).convert()
+                                        pygame.image.load(VICTORY).convert()
                                 
                         else:
                                 final_background = \
-                                        pygame.image.load(defeat).convert()
+                                        pygame.image.load(DEFEAT).convert()
 
                         
         window.blit(final_background, (0, 0))

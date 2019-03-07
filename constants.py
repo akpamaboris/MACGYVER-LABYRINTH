@@ -7,28 +7,28 @@ lvl_design = "lvl_design.txt"
 
 # Picture list
 # Map
-pic_background = "pic/fond.jpg"
-pic_wall = "pic/mur.png"
-pic_start = "pic/Start_sprite.jpg"
-pic_end = "pic/Gardian.png"
+PIC_BACKGROUND = "pic/fond.jpg"
+PIC_WALL = "pic/mur.png"
+PIC_START = "pic/Start_sprite.jpg"
+PIC_END = "pic/Gardian.png"
 
 
 # Character
-mcGyver_up = "pic/MacGyver.png"
-mcGyver_down = "pic/MacGyver.png"
-mcGyver_right = "pic/MacGyver.png"
-mcGyver_left = "pic/MacGyver.png"
+MCGYVER_UP = "pic/MacGyver.png"
+MCGYVER_DOWN = "pic/MacGyver.png"
+MCGYVER_RIGHT = "pic/MacGyver.png"
+MCGYVER_LEFT = "pic/MacGyver.png"
 
 # Object
-pic_needle = "pic/o1.png"
-pic_tube = "pic/o2.png"
-pic_ether = "pic/o3.png"
-object_taken = "pic/object_taken.png"
+PIC_NEEDLE = "pic/o1.png"
+PIC_TUBE = "pic/o2.png"
+PIC_ETHER = "pic/o3.png"
+OBJECT_TAKEN = "pic/object_taken.png"
 
 
 # End of the game
-victory = "pic/victory.jpg"
-defeat = "pic/fail.jpg"
+VICTORY = "pic/victory.jpg"
+DEFEAT = "pic/fail.jpg"
 
 # Start of the game
 START_PICTURE = "pic/Start_Menu.jpg"
