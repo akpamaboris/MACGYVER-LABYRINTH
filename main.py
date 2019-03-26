@@ -1,15 +1,22 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
-import pygame,sys
+import sys
 from pygame.locals import *
 from classes import *
-from constants import *
+from constants import WINDOW_SIZE, START_PICTURE, VICTORY, DEFEAT, PIC_BACKGROUND,\
+    PIC_ETHER, PIC_NEEDLE, PIC_TUBE, MCGYVER_UP, MCGYVER_DOWN, MCGYVER_RIGHT,\
+    MCGYVER_LEFT
+
+"""
+Main file of the game
+
+"""
 
 pygame.init()
 
 # Open the Pygame window
-window = pygame.display.set_mode((window_size, window_size))
+WINDOW_GAME = pygame.display.set_mode((WINDOW_SIZE, WINDOW_SIZE))
 
 # Chargement et collage du fond
 
@@ -18,155 +25,141 @@ window = pygame.display.set_mode((window_size, window_size))
 pygame.display.set_caption("Maze of Mac Gyver")
 
 # Initialization of the program loop
-prog = 0
+PROG_GAME = 0
 
 # Initilization of the game loop
-game = 0
+GAME_LOOP = 0
 
 
 # Menu loop
-continue_home =  1
-while continue_home :
-        #Loading and displaying the home picture
-        home_game = pygame.image.load(START_PICTURE).convert()
-        window.blit(home_game,(0,-17))
+CONTINUE_HOME = 1
+while CONTINUE_HOME:
+    # Loading and displaying the home picture
+    HOME_GAME = pygame.image.load(START_PICTURE).convert()
+    WINDOW_GAME.blit(HOME_GAME, (0, -17))
 
-        #Refresh
-        pygame.display.flip()
+    # Refresh
+    pygame.display.flip()
 
-        #Setting the variables
-        start_game =1
+    # Setting the variables
+    START_GAME = 1
 
-        #Loop Home
-        while continue_home:
-                pygame.time.Clock().tick(30)
+    # Loop Home
+    while CONTINUE_HOME:
+        pygame.time.Clock().tick(30)
 
-                for event in pygame.event.get():
+        for event in pygame.event.get():
 
-                        if event.type == QUIT :
-                                continue_home =0
-                                pygame.quit()
-                                sys.exit()
+            if event.type == QUIT:
+                CONTINUE_HOME = 0
+                pygame.quit()
+                sys.exit()
 
-                        elif event.type == KEYDOWN:
-                                #Lauching the game
-                                if event.key ==  K_RETURN:
+            elif event.type == KEYDOWN:
+                # Lauching the game
+                if event.key == K_RETURN:
 
-                                        continue_home =0
-                                        prog =1
-                                        game =1
-
-
-
-
-
+                    CONTINUE_HOME = 0
+                    PROG_GAME = 1
+                    GAME_LOOP = 1
 
 
 # Initialization of the program loop
-prog = 1
+PROG_GAME = 1
 
 # Initilization of the game loop
-game = 1
+GAME_LOOP = 1
 
 
 # Program loop
-while prog:
+while PROG_GAME:
 
-        # Initialization of the lvl
-        lvl = Map()
-        lvl.create()
-        # Initilization of the lvl design
-        lvl.display(window)
-        background = pygame.image.load(PIC_BACKGROUND).convert()
+    # Initialization of the lvl
+    LEVEL_DESIGN = Map()
+    LEVEL_DESIGN.create()
 
-        # Initialization of the character
-        mcGyver = Character(MCGYVER_RIGHT, MCGYVER_LEFT,
-                            MCGYVER_UP, MCGYVER_DOWN, lvl)
+    # Initilization of the lvl design
+    LEVEL_DESIGN.display(WINDOW_GAME)
+    BACKGROUND_GAME = pygame.image.load(PIC_BACKGROUND).convert()
 
-        # Initialization of objects
-        ether = Object(lvl, PIC_ETHER)
-        needle = Object(lvl, PIC_NEEDLE)
-        tube = Object(lvl, PIC_TUBE)
-## Boucle
-##
-##
-##        
-        obj_list = [ether, needle, tube]
+    # Initialization of the character
+    MCGYVER_CHAR = Character(MCGYVER_RIGHT, MCGYVER_LEFT, MCGYVER_UP, MCGYVER_DOWN, LEVEL_DESIGN)
 
+    # Initialization of objects
+    ETHER_OBJECT = Object(LEVEL_DESIGN, PIC_ETHER)
+    NEEDLE_OBJECT = Object(LEVEL_DESIGN, PIC_NEEDLE)
+    TUBE_OBJECT = Object(LEVEL_DESIGN, PIC_TUBE)
+
+    # Loop
+
+    OBJ_LIST = [ETHER_OBJECT, NEEDLE_OBJECT, TUBE_OBJECT]
 
 
+    # Game loop
+    while GAME_LOOP:
 
+        # Limitation of the number of loop per second
+        pygame.time.Clock().tick(30)
 
-        # Game loop
-        while game:
+        # Detection of events
+        for event in pygame.event.get():
 
-                # Limitation of the number of loop per second
-                pygame.time.Clock().tick(30)
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
 
-                # Detection of events
-                for event in pygame.event.get():
+            if event.type == KEYDOWN:
+                if event.key == K_RIGHT:
+                    MCGYVER_CHAR.move('right')
+                elif event.key == K_LEFT:
+                    MCGYVER_CHAR.move('left')
+                elif event.key == K_UP:
+                    MCGYVER_CHAR.move('up')
+                elif event.key == K_DOWN:
+                    MCGYVER_CHAR.move('down')
 
-                        if event.type == QUIT:
-                                pygame.quit()
-                                sys.exit()
+        # Display the lvl and objects
+        WINDOW_GAME.blit(BACKGROUND_GAME, (0, 0))
+        LEVEL_DESIGN.display(WINDOW_GAME)
+        for obj in OBJ_LIST:
+            WINDOW_GAME.blit(obj.design, (obj.obj_sprite_x, obj.obj_sprite_y))
 
-                        if event.type == KEYDOWN:
-                                if event.key == K_RIGHT:
-                                        mcGyver.move('right')
-                                elif event.key == K_LEFT:
-                                        mcGyver.move('left')
-                                elif event.key == K_UP:
-                                        mcGyver.move('up')
-                                elif event.key == K_DOWN:
-                                        mcGyver.move('down')
+            # Test if an object have been taken
+            # if obj.taken is False:
+            MCGYVER_CHAR.take_obj(obj)
 
-                # Display the lvl and objects
-                window.blit(background, (0, 0))
-                lvl.display(window)
-                for obj in obj_list:
-                        window.blit(obj.design, (obj.obj_sprite_x,
-                                                 obj.obj_sprite_y))
-                        # Test if an object have been taken
-                        #if obj.taken is False:
-                        mcGyver.take_obj(obj)
+        # Display a counter
+        MYFONT_GAME = pygame.font.SysFont("monospace", 32)
+        MYFONT_GAME.set_bold(True)
+        COUNTER_DISPLAY = MYFONT_GAME.render("x " + str(MCGYVER_CHAR.nb_object), False,
+        (255, 255, 0))
+        WINDOW_GAME.blit(COUNTER_DISPLAY, (0, 30 * (NB_SPRITE - 1)))
 
-
-                #Display a counter
-                myfont = pygame.font.SysFont("monospace", 32)
-                myfont.set_bold(True)
-                counter_display = myfont.render("x " + str(mcGyver.nb_object), False, (255, 255, 0))
-                window.blit(counter_display, (0, 30 * (nb_sprite - 1)))
-
-
-                # Update the character direction
-                window.blit(mcGyver.direction, (mcGyver.sprite_x,
-                                                mcGyver.sprite_y))
-                # Update the window
-                pygame.display.flip()
-
-                # Test if the game is finish
-                if (lvl.structure[mcGyver.y][mcGyver.x] == 'a'):
-                        game = 0
-
-                # Test of victory
-                        if mcGyver.nb_object == 3:
-                                final_background = \
-                                        pygame.image.load(VICTORY).convert()
-                                
-                        else:
-                                final_background = \
-                                        pygame.image.load(DEFEAT).convert()
-
-                        
-        window.blit(final_background, (0, 0))
+        # Update the character direction
+        WINDOW_GAME.blit(MCGYVER_CHAR.direction, (MCGYVER_CHAR.sprite_x, MCGYVER_CHAR.sprite_y))
+        # Update the window
         pygame.display.flip()
 
-        # New game or quit the program
-        for event in pygame.event.get():
-                if event.type == QUIT:
-                        prog = 0
-                elif event.type == KEYDOWN:
-                    if event.key == K_r:
-                        game = 1
-                    elif event.key == K_ESCAPE:
-                        prog = 0
+        # Test if the game is finish
+        if LEVEL_DESIGN.structure[MCGYVER_CHAR.y][MCGYVER_CHAR.x] == 'a':
+            GAME_LOOP = 0
+
+        # Test of victory
+        if MCGYVER_CHAR.nb_object == 3:
+            FINAL_BACKGROUND = pygame.image.load(VICTORY).convert()
+                                
+        else:
+            FINAL_BACKGROUND = pygame.image.load(DEFEAT).convert()
+
+    WINDOW_GAME.blit(FINAL_BACKGROUND, (0, 0))
+    pygame.display.flip()
+
+    # New game or quit the program
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            PROG_GAME = 0
+        elif event.type == KEYDOWN:
+            if event.key == K_r:
+                GAME_LOOP = 1
+            elif event.key == K_ESCAPE:
+                PROG_GAME = 0

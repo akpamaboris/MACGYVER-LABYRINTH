@@ -1,8 +1,14 @@
+"""
+Constantes of the game
+
+
+"""
+
 # window
-nb_sprite = 15
-size_sprite = 30
-window_size = 450
-lvl_design = "lvl_design.txt"
+NB_SPRITE = 15
+SIZE_SPRITE = 30
+WINDOW_SIZE = 450
+LVL_DESIGN = "lvl_design.txt"
 
 
 # Picture list
