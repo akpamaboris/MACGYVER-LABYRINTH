@@ -1,26 +1,26 @@
-PROJET 3 - MACGYVER GAME
-DESCRIPTION :
-Le projet 3 est un jeu 2D développé avec la bibliothèque Pygame.
+**PROJET 3 - MACGYVER GAME
+DESCRIPTION :**
+Le projet 3 est un jeu 2D dÃ©veloppÃ© avec la bibliothÃ¨que Pygame.
 
-Le jeu consiste à aider Mac Gyver à s'échapper d'un labyrinthe. 
-La sortie est surveillée par un gardien. 
-Tant que Mac Gyver ne peut pas endormir le gardien avec l'objet fabriqué à partir des pièces du labyrinthe, 
+Le jeu consiste Ã  aider Mac Gyver Ã  s'Ã©chapper d'un labyrinthe. 
+La sortie est surveillÃ©e par un gardien. 
+Tant que Mac Gyver ne peut pas endormir le gardien avec l'objet fabriquÃ© Ã  partir des piÃ¨ces du labyrinthe, 
 il ne peut pas sortir. 
-S'il se présente au gardien sans avoir toutes les pièces, la partie est perdue.
+S'il se prÃ©sente au gardien sans avoir toutes les piÃ¨ces, la partie est perdue.
 
 
-PRE-REQUIS
-Version de Python 3.4 ou supérieure.
-Version de Pygame 1.5.2 ou supérieure.
+**PRE-REQUIS**
+Version de Python 3.4 ou supÃ©rieure.
+Version de Pygame 1.5.2 ou supÃ©rieure.
 
-EXEMPLES FONCTIONNEMENT
-Lorsque la première fenêtre de l'application s'affiche, appuyez sur Entrée pour débuter la partie.
-Pour jouer au jeu, utilisez les touches flèches de votre clavier.
+**EXEMPLES FONCTIONNEMENT**
+Lorsque la premiÃ¨re fenÃªtre de l'application s'affiche, appuyez sur EntrÃ©e pour dÃ©buter la partie.
+Pour jouer au jeu, utilisez les touches flÃ¨ches de votre clavier.
 
-INSTALLER
+**INSTALLER**
 Copier les fichiers du lien https://github.com/zeliwipin/Game_MacGyver.
 Installer Pycharm.
 Ouvrir le fichier Python "main"
 
-SOUMETTRE BUGS
-Si vous rencontrez un bug pendant le jeu, merci de laisser un commentaire en expliquant le problème.
+**SOUMETTRE BUGS**
+Si vous rencontrez un bug pendant le jeu, merci de laisser un commentaire en expliquant le problÃ¨me.
